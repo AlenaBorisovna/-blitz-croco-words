@@ -8,7 +8,7 @@ from zipfile import ZipFile
 current_file = os.path.relpath(__file__)
 current_directory = os.path.dirname(current_file)
 
-PATH_FILE_ZIP = "D:\Учеба\-blitz-croco-words\src\croco-blitz-source.zip"
+PATH_FILE_ZIP = "croco-blitz-source.zip"
 
 
 def zip_f():
