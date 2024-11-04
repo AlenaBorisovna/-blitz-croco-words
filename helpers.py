@@ -21,7 +21,7 @@ def get_words_presentation(file: IO[bytes]) -> list[str]:
     return words_list
 
 
-def write_txt(filename: str, words: list[str]):
+def write_txt(filename: str, words: set[str]):
     try:
         with open(filename, 'w', encoding='utf-8') as file_text:
             for word in words:
