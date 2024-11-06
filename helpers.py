@@ -3,6 +3,7 @@ from zipfile import ZipFile
 from pathlib import Path
 from typing import IO
 from pptx import Presentation
+from pyaspeller import YandexSpeller
 
 FILE_TXT: str = 'words.txt'
 FILE_ZIP = 'croco-blitz-source.zip'
@@ -34,3 +35,11 @@ def write_txt(filename: str, words: set[str] or str):
         print(f"Слова записаны в файл: {filename}")
     except IOError as e:
         print(f"error: {e}")
+
+
+def speller_word(words: set[str]) -> list[str]:
+    print(f"проверка правильности написания слов {len(words)} с помощью Yandex Speller")
+    spellers = YandexSpeller()
+    fixes = spellers.spelled(' '.join(words))
+    print('проверка орфографии выполнена')
+    return fixes.split(' ')
