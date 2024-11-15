@@ -21,7 +21,12 @@ def main():
     # Сохраняем изменения в базе данных
     con.commit()
 
-def add_data(con: sqlite3.Connection, name: str, data_dict: {str,str}):
+
+def add_data(con: sqlite3.Connection, name: str, data_dict: {str, str}):
+    cur = con.cursor()
+    cur.execute('CREATE TABLE IF NOT EXISTS movie(title, year, score)')
+    cur.executemany('INSERT INTO {name} VALUES(?, ?, ?)', data_dict)
+    cur.close()
 
 
 if __name__ == '__main__':
