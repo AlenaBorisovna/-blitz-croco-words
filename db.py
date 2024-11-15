@@ -6,6 +6,7 @@ def main():
     con = sqlite3.connect('words.db')
     # Создаем объект курсора для выполнения SQL-запросов
     cur = con.cursor()
+    cur.executemany()
     # Создаем таблицу movie с колонками title, year и score
     cur.execute('CREATE TABLE IF NOT EXISTS movie(title, year, score)')
 
@@ -19,6 +20,8 @@ def main():
     cur.executemany("INSERT INTO movie VALUES(?, ?, ?)", data)
     # Сохраняем изменения в базе данных
     con.commit()
+
+def add_data(con: sqlite3.Connection, name: str, data_dict: {str,str}):
 
 
 if __name__ == '__main__':
